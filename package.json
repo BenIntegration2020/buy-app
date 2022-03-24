@@ -1,0 +1,27 @@
+{
+  "name": "buy-app",
+  "version": "1.0.0",
+  "description": "buy-app",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenIntegration2020/buy-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenIntegration2020/buy-app/issues"
+  },
+  "homepage": "https://github.com/BenIntegration2020/buy-app#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-ejs-layouts": "^2.5.1",
+    "http": "^0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
