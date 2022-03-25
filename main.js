@@ -7,6 +7,11 @@ const dotenv = require('dotenv');
 dotenv.config({path: './configuration.env'});
 
 
+
+
+
+
+
 //public
 // app.use(express.static(path.resolve(__dirname, "/public")));
 // app.use(express.static('public'))
@@ -23,6 +28,6 @@ app.get("/", controller.sendIndex);
 //définir le port
 
 const port = process.env.PORT || 5000;
-server.listen(port, ()=>{
+app.listen(port, ()=>{
     console.log("serveur listening on port 3000");
 });
