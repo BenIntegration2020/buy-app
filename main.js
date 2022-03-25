@@ -3,6 +3,13 @@ const app = express()
 const path = require('path');
 const http = require('http');
 // const expressLayouts = require('express-ejs-layouts');
+const dotenv = require('dotenv');
+dotenv.config({path: './configuration.env'});
+
+
+
+
+
 
 
 //public
@@ -19,6 +26,8 @@ const controller = require('./controllers/homeController');
 app.get("/", controller.sendIndex);
 
 //définir le port
-app.listen(3000, ()=>{
-    console.log('server is 3000');
-})
+
+const port = process.env.PORT || 5000;
+app.listen(port, ()=>{
+    console.log("serveur listening on port 3000");
+});
