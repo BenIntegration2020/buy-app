@@ -2,7 +2,7 @@ const express = require('express');
 const app = express()
 const path = require('path');
 const http = require('http');
-// const expressLayouts = require('express-ejs-layouts');
+const expressLayouts = require('express-ejs-layouts');
 const dotenv = require('dotenv');
 dotenv.config({path: './configuration.env'});
 
@@ -17,7 +17,8 @@ dotenv.config({path: './configuration.env'});
 // app.use(express.static('public'))
 
 //views
-// app.use(expressLayouts);
+app.use(expressLayouts);
+app.set('layout', './layouts/myLayouts');
 app.set('views', path.resolve(__dirname+'/views'));
 app.set('view engine', 'ejs');
 
