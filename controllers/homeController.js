@@ -28,13 +28,13 @@ exports.saveProduct = (req, res)=>{
 
 }
 
-// exports.FindOneProduct = (req, res)=>{
-// const searchById = {_id: req.params.id};
-// Product.findById(searchById).then(product=>{res.send(product)}).catch(
-//     error=>{console.log(error);}
-// )};
+exports.FindOneProduct = (req, res)=>{
+const searchById = {_id: req.params.id};
+Product.findById(searchById).then(product=>{res.send(product)}).catch(
+    error=>{console.log(error);}
+)};
 
-exports.allProducts = (req, res)=>{
+exports.ShowAllProducts = (req, res)=>{
     Product.find({}).then(product=>{
         res.render('index', {products: product});
     }).catch(error=>{
