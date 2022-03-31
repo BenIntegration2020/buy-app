@@ -1,13 +1,13 @@
 const express = require('express');
-const routes = express.Router();
+const router = express.Router();
 const homeController = require('../controllers/homeController');
 
 // routes.get('/', homeController.getIndex);
 // routes.get("/products", homeController.getIndex);
-routes.post('/new', homeController.saveProduct);
+router.post('/new', homeController.saveProduct);
 
-routes.get('/new', homeController.AddNewProduct);
-routes.get("/:id", homeController.FindOneProduct);
-routes.get('/', homeController.ShowAllProducts);
+router.get('/new', homeController.AddNewProduct);
+router.get("/:id", homeController.FindOneProduct);
+router.get('/', homeController.ShowAllProducts);
 
-module.exports = routes;
+module.exports = router;
