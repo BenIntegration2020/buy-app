@@ -1,13 +1,5 @@
-// exports.getIndex = (req, res)=>{
-//     res.render('index');
-// };
-
 //ajout nouveau produit
 const Product = require("../models/product");
-
-// exports.getIndex = (req, res)=>{
-//     res.render("index");
-// }
 
 exports.AddNewProduct = (req, res) => {
   res.render("new");
@@ -35,11 +27,11 @@ exports.saveProduct = (req, res) => {
     });
 };
 
-exports.FindOneProduct = (req, res) => {
+exports.editUser = (req, res) => {
   const searchById = { _id: req.params.id };
   Product.findById(searchById)
     .then((product) => {
-      res.send(product);
+      res.render('edit', { product: product });
     })
     .catch((error) => {
       console.log(error);
@@ -54,4 +46,19 @@ exports.ShowAllProducts = (req, res) => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+exports.updateProduct = (req, res) => {
+  let searchQuery = {_id : req.params.id};
+  Product.updateOne(searchQuery, {$set: {
+    productCode: req.body.productCode,
+    description: req.body.description,
+    price: parseFloat(req.body.price),
+  }})
+  .then(product => {
+    res.redirect('/');
+  })
+  .catch(error => {
+    res.redirect('/');
+  });
 };

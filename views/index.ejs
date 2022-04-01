@@ -11,14 +11,17 @@
     </tr>
   </thead>
   <tbody class="table-hover">
-    <% console.log(products); %> 
     <% products.forEach((product)=> { %>
     <tr>
       <td><%= product.productCode %></td>
       <td><%= product.description %></td>
       <td><%= product.price %></td>
       <td>
-        <button type="button">Edit</button><button type="button">Delete</button></td>
+        <form action="/edit/<%= product._id %> ">
+          <button type="submit">Edit</button>
+        </form>
+        <button type="button">Delete</button>
+      </td>
     </tr>
     <% }) %>
   </tbody>

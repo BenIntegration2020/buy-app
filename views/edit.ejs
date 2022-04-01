@@ -1,0 +1,14 @@
+<h1>Edit Product</h1>
+<form class="offset-1 mt-5 row border border-dark border-2 py-3" action="/edit/<%= product.id %>?_method=put " method="post">
+    <div class="form-group col-12">
+        <div class="row justify-content-center">
+            <label for="productCode">Product Code</label>
+            <input type="text" value="<%= product.productCode %> " class="form-control w-auto me-3" name="productCode" id="productCode">
+            <label for="productCode">Description</label>
+            <input type="text" value="<%= product.description %> " class="form-control w-auto me-3" name="description" id="description">
+            <label for="productCode">Prix</label>
+            <input type="text" value="<%= product.price %> " class="form-control w-auto me-3" name="price" id="price">
+            <input id="soumettre" type="submit" value="Update Product" class="w-auto btn btn-success btn-sm mt-2"/>
+        </div>
+    </div>
+</form>
