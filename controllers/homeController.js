@@ -62,3 +62,17 @@ exports.updateProduct = (req, res) => {
     res.redirect('/');
   });
 };
+
+exports.deleteProduct = (req, res) => {
+  console.log('delete');
+  let searchQuery = { _id : req.params.id};
+  Product.deleteOne(searchQuery)
+  .then(product => {
+    console.log(product);
+    res.redirect('/');
+  })
+  .catch(error => {
+    console.log(error);
+    res.redirect('/');
+  });
+};
