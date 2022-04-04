@@ -17,10 +17,12 @@
       <td><%= product.description %></td>
       <td><%= product.price %></td>
       <td>
-        <form action="/edit/<%= product._id %> ">
-          <button type="submit">Edit</button>
+        <form action="/edit/<%= product._id %> " style="display: inline">
+          <button type="submit" class="btn bg-success">Edit</button>
         </form>
-        <button type="button">Delete</button>
+        <form style="display: inline" action="/delete/<%= product.id %>?_method=delete " method="post">
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
       </td>
     </tr>
     <% }) %>
