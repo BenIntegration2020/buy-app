@@ -18,11 +18,11 @@ exports.saveProduct = (req, res) => {
   newProduct
     .save()
     .then(() => {
-      res.render("new", {
-
-      });
+      req.flash('success_msg', 'Product successfully added');
+      res.redirect("/");
     })
     .catch((error) => {
+      req.flash(`error_msg', 'Failed to add product because ${error.message}`);
       console.log(error);
     });
 };
@@ -56,9 +56,11 @@ exports.updateProduct = (req, res) => {
     price: parseFloat(req.body.price),
   }})
   .then(product => {
+    req.flash('success_msg', 'Product successfully updated');
     res.redirect('/');
   })
   .catch(error => {
+    req.flash(`error_msg', 'Failed to update product because ${error.message}`);
     res.redirect('/');
   });
 };
@@ -67,9 +69,11 @@ exports.deleteProduct = (req, res) => {
   let searchQuery = { _id : req.params.id};
   Product.deleteOne(searchQuery)
   .then(product => {
+    req.flash('success_msg', 'Product successfully deleted');
     res.redirect('/');
   })
   .catch(error => {
+    req.flash(`error_msg', 'Failed to delete product because ${error.message}`);
     console.log(error);
     res.redirect('/');
   });
