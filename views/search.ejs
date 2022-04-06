@@ -1,5 +1,5 @@
 <h1>Search Product</h1>
-<form class="offset-1 mt-5 row border border-dark border-2 py-3" action="/searchResult/" method="get">
+<form class="offset-1 mt-5 row border border-dark border-2 py-3" action="/searchProduct" method="get">
     <div class="form-group col-12">
         <div class="row justify-content-center">
             <input type="text" placeholder="Product Code" class="form-control w-auto me-3" name="productCode" id="productCode">
@@ -9,3 +9,16 @@
         </div>
     </div>
 </form>
+
+<% if (productCode) { %> 
+
+    <tr>
+        <td><%= productCode %></td>
+        <td><%= description %></td>
+        <td><%= price %></td>
+    <tr>
+ 
+        
+       <% } %>  
+       
+

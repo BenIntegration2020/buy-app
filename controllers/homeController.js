@@ -22,7 +22,7 @@ exports.saveProduct = (req, res) => {
       res.redirect("/");
     })
     .catch((error) => {
-      req.flash(`error_msg', 'Failed to add product because ${error.message}`);
+      req.flash('error_msg', `Failed to add product because ${error.message}`);
       console.log(error);
     });
 };
@@ -80,5 +80,30 @@ exports.deleteProduct = (req, res) => {
 };
 
 exports.getSearchProduct = (req, res) => {
-  res.render('search');
+  res.render('search', {
+    productCode : undefined
+  });
+};
+
+exports.displaySearchProduct = (req, res) => {
+  const productCode = req.query.productCode;
+  console.log(productCode);
+  
+    Product.findOne({ productCode: productCode })
+    .then((product) => {
+      if (!!product) {
+      res.render('search', {
+        productCode: product.productCode,
+        description: product.description,
+        price: product.price
+      });
+    } else {
+      req.flash('error_msg', `Could not find product with code: ${productCode}`);
+      res.redirect('/search');
+    }
+    })
+    .catch(error => {
+      console.log(error);
+      res.redirect('search');
+    });
 };
