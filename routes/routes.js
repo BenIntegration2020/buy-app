@@ -10,6 +10,7 @@ router.delete('/delete/:id', homeController.deleteProduct);
 
 router.get('/new', homeController.AddNewProduct);
 router.get('/search', homeController.getSearchProduct);
+router.get('/searchProduct', homeController.displaySearchProduct);
 router.get('/edit/:id', homeController.editUser);
 router.get('/', homeController.ShowAllProducts);
 
