@@ -1,26 +1,25 @@
-<table
-  id="productTable"
-  class="table display table-bordered border border-dark border-2 m-3"
->
-  <thead class="table-dark">
+
+
+<table id="productTable" class="table table-hover display-inline-block table-bordered border border-dark border-2 me-3 table-striped compact">
+  <thead class="table-secondary">
     <tr>
-      <th>Code</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Edit / Delete</th>
+      <th class="h3 px-2">Code</th>
+      <th class="h3 px-2">Description</th>
+      <th class="h3 px-2">Price</th>
+      <th class="h3 px-2">Operations</th>
     </tr>
   </thead>
-  <tbody class="table-hover">
+  <tbody class="table-dark">
     <% products.forEach((product)=> { %>
     <tr>
-      <td><%= product.productCode %></td>
-      <td><%= product.description %></td>
-      <td><%= product.price %></td>
+      <td class="h3"><%= product.productCode %></td>
+      <td class="h3"><%= product.description %></td>
+      <td class="h3"><%= product.price %></td>
       <td>
         <form action="/edit/<%= product._id %> " style="display: inline">
-          <button type="submit" class="btn bg-success">Edit</button>
+          <button type="submit" class="offset-1 btn bg-success">Edit</button>
         </form>
-        <form style="display: inline" action="/delete/<%= product.id %>?_method=delete " method="post">
+        <form style="display: inline" action="/delete/<%= product.id %>?_method=delete" method="post">
         <button type="submit" class="btn btn-danger">Delete</button>
       </form>
       </td>
