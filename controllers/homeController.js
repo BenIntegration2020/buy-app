@@ -107,3 +107,8 @@ exports.displaySearchProduct = (req, res) => {
       res.redirect('search');
     });
 };
+
+
+exports.showSignup = (req, res) => {
+  res.render('user/signup');
+};
