@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const homeController = require('../controllers/homeController');
-const subscriberController = require('../controllers/subscriberController');
-const Subscriber = require("../models/subscriber.js");
 const userController = require('../controllers/userController');
+const User = require("../models/user.js");
 
 router.post('/new', homeController.saveProduct);
 
@@ -17,8 +16,10 @@ router.get('/searchProduct', homeController.displaySearchProduct);
 router.get('/edit/:id', homeController.editUser);
 router.get('/', homeController.ShowAllProducts);
 
-router.get('/signup', homeController.showSignup);
-router.post('/user/signup', subscriberController.saveSubscriber, subscriberController.renderSignin); 
+router.get('/signup', userController.showSignup);
 
+router.get('/signin', userController.renderSignin);
+router.post('/signin', userController.saveUser, userController.renderSignin);
+router.post('/', userController.authenticate);
 
 module.exports = router;
