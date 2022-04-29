@@ -4,8 +4,10 @@ const path = require("path");
 const expressLayouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const passport = require ('passport');
 const expressSession = require('express-session');
 const cookieParser = require('cookie-parser');
+const LocalStrategy = require('passport-local').Strategy;
 const connectFlash = require('connect-flash');
 dotenv.config({ path: "./configuration.env" });
 
@@ -38,8 +40,14 @@ app.use(expressSession({
   resave: false,
   saveUnitialized: false,
 }));
-app.use(connectFlash());
+app.use(passport.initialize());
+app.use(passport.session());
+const User = require('./models/user');
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
+app.use(connectFlash());
 app.use((req, res, next) => {
   res.locals.flashMessages = req.flash();
   next();

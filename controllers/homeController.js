@@ -109,6 +109,3 @@ exports.displaySearchProduct = (req, res) => {
 };
 
 
-exports.showSignup = (req, res) => {
-  res.render('user/signup');
-};
