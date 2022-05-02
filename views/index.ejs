@@ -4,7 +4,9 @@
       <th class="h3 px-2">Code</th>
       <th class="h3 px-2">Description</th>
       <th class="h3 px-2">Price</th>
+      <% if (user) { %>
       <th class="h3 px-2">Operations</th>
+      <% } %>
     </tr>
   </thead>
   <tbody class="table-dark">
@@ -13,6 +15,7 @@
       <td class="h3"><%= product.productCode %></td>
       <td class="h3"><%= product.description %></td>
       <td class="h3"><%= product.price %></td>
+      <% if (user) { %>
       <td>
         <form action="/edit/<%= product._id %> " style="display: inline">
           <button type="submit" class="offset-1 btn bg-success">Edit</button>
@@ -21,6 +24,7 @@
         <button type="submit" class="btn btn-danger">Delete</button>
       </form>
       </td>
+      <% } %>
     </tr>
     <% }) %>
   </tbody>
