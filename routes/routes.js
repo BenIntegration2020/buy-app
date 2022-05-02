@@ -20,6 +20,16 @@ router.get('/signup', userController.showSignup);
 
 router.get('/signin', userController.renderSignin);
 router.post('/signin', userController.saveUser, userController.renderSignin);
-router.post('/', userController.authenticate);
+router.get('/', function(req, res, next) {
+    if(req.isAuthenticated()){
+        // res.locals.user = req.user;
+        res.redirect('/');
+        next();
+      }
+    else{
+      res.render('signin');
+    }
+  });
+router.post('/connexion', userController.authenticate);
 
 module.exports = router;

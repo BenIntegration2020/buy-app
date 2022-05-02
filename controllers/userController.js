@@ -22,12 +22,16 @@ module.exports = {
           })
     },
 
+
     authenticate: passport.authenticate('local', {
-        failureRedirect: '/signin',
-        failureFlash: 'Your login does not work',
-        successRedirect: '/',
-        successFlash: 'You are now logged in!'
-    }),
+      failureRedirect: "/signin",
+      successRedirect: "/",
+  }),
+
+    // showUserNav: (req,res) =>{
+    //   res.locals.user = req.user;
+    // },
+
 
     renderSignin: (req, res) => {
         res.render("user/signin");

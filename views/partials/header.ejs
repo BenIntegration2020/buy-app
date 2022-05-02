@@ -21,8 +21,14 @@
     <title>Product Database System</title>
 </head>
 <body class="bg-light">
+   
     <header> 
         <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+          <% if(!user){ %>
+            <li class="nav-item border-start"><a href="/signin" class="nav-link text-white h2 mt-2">Signin</a></li>
+            <li class="nav-item border-start"><a href="/signup" class="nav-link text-white h2 mt-2">Create an account</a></li>
+         <% } %>
+          <% if (user){ %>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="menu">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -38,7 +44,9 @@
                 </svg></a></li>
             </ul>
             </div>
+          <% } %>
           </nav>
+   
     </header>
     <%- include('./messages') %> 
     <main class="container d-flex justify-content-center mt-3">
