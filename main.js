@@ -47,6 +47,11 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use(function (req, res, next) {
+  res.locals.user = req.user || null;
+  next();
+});
+
 app.use(connectFlash());
 app.use((req, res, next) => {
   res.locals.flashMessages = req.flash();
