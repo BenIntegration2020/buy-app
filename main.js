@@ -11,6 +11,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const connectFlash = require('connect-flash');
 dotenv.config({ path: "./configuration.env" });
 
+const User = require('./models/user');
 const Product = require('./models/product');
 const methodOverride = require('method-override');
 const controller = require("./controllers/homeController");
@@ -42,7 +43,7 @@ app.use(expressSession({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-const User = require('./models/user');
+
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

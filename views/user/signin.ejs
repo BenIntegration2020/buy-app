@@ -5,6 +5,9 @@
       <input type="email" name="email" id="userEmail" class="form-control" placeholder="Email address" required>
       <label for="password">Password</label>
       <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+      <% if (flashMessages.error && flashMessages.error != '') { %>  <p class="text-danger">Forgot password?</p>
+
+      <% } %> 
       <br /><button class="btn btn-lg btn-primary btn-block" type="submit">Signin</button>
     </form>
   </div>
