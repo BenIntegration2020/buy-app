@@ -18,16 +18,20 @@ module.exports = {
             }
             else{
                 res.locals.redirect = '/';
+                next();
             }
-          })
+          });
     },
 
 
     authenticate: passport.authenticate('local', {
       failureRedirect: "/signin",
+      failureFlash: "You cannot connect",
       successRedirect: "/",
+      successFlash: "You are logged in"
   }),
 
+  
     // showUserNav: (req,res) =>{
     //   res.locals.user = req.user;
     // },

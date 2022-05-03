@@ -18,11 +18,11 @@ exports.saveProduct = (req, res) => {
   newProduct
     .save()
     .then(() => {
-      req.flash('success_msg', 'Product successfully added');
+      req.flash('success', 'Product successfully added');
       res.redirect("/");
     })
     .catch((error) => {
-      req.flash('error_msg', `Failed to add product because ${error.message}`);
+      req.flash('error', `Failed to add product because ${error.message}`);
       console.log(error);
     });
 };
@@ -56,11 +56,11 @@ exports.updateProduct = (req, res) => {
     price: parseFloat(req.body.price),
   }})
   .then(product => {
-    req.flash('success_msg', 'Product successfully updated');
+    req.flash('success', 'Product successfully updated');
     res.redirect('/');
   })
   .catch(error => {
-    req.flash(`error_msg', 'Failed to update product because ${error.message}`);
+    req.flash(`error', 'Failed to update product because ${error.message}`);
     res.redirect('/');
   });
 };
@@ -69,11 +69,11 @@ exports.deleteProduct = (req, res) => {
   let searchQuery = { _id : req.params.id};
   Product.deleteOne(searchQuery)
   .then(product => {
-    req.flash('success_msg', 'Product successfully deleted');
+    req.flash('success', 'Product successfully deleted');
     res.redirect('/');
   })
   .catch(error => {
-    req.flash(`error_msg', 'Failed to delete product because ${error.message}`);
+    req.flash(`error', 'Failed to delete product because ${error.message}`);
     console.log(error);
     res.redirect('/');
   });
@@ -98,7 +98,7 @@ exports.displaySearchProduct = (req, res) => {
         price: product.price
       });
     } else {
-      req.flash('error_msg', `Could not find product with code: ${productCode}`);
+      req.flash('error', `Could not find product with code: ${productCode}`);
       res.redirect('/search');
     }
     })
@@ -108,4 +108,12 @@ exports.displaySearchProduct = (req, res) => {
     });
 };
 
-
+exports.getIndex = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    // res.locals.user = req.user;
+    res.redirect("/");
+    next();
+  } else {
+    res.render("signin");
+  }
+};
