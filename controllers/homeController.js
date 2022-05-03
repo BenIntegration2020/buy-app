@@ -108,4 +108,12 @@ exports.displaySearchProduct = (req, res) => {
     });
 };
 
-
+exports.getIndex = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    // res.locals.user = req.user;
+    res.redirect("/");
+    next();
+  } else {
+    res.render("signin");
+  }
+};

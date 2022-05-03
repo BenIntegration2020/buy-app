@@ -20,15 +20,7 @@ router.get("/signup", userController.showSignup);
 
 router.get("/signin", userController.renderSignin);
 router.post("/signin", userController.saveUser, userController.renderSignin);
-router.get("/", function (req, res, next) {
-  if (req.isAuthenticated()) {
-    // res.locals.user = req.user;
-    res.redirect("/");
-    next();
-  } else {
-    res.render("signin");
-  }
-});
+router.get("/", homeController.getIndex);
 router.post("/connexion", userController.authenticate);
 router.get("/logout", function (req, res) {
   req.logOut();
