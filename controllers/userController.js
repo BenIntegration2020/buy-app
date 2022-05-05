@@ -42,8 +42,13 @@ module.exports = {
       },
     showSignup: (req, res) => {
         res.render('user/signup');
-      }
-}
+      },
+
+    logout: (req, res) => {
+      req.logOut();
+      res.redirect("/");
+    } 
+};
 
 //fonction header = menu affiché lorsque user authentifié
 //fonction isAuthentificated() req.isauthentificated
