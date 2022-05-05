@@ -1,13 +1,33 @@
 <div class="data-form">
-    <form class="formSignin" action="/connexion" method="POST">
-      <h2>Sign In to your account</h2>
-      <label for="email">Email address</label>
-      <input type="email" name="email" id="userEmail" class="form-control" placeholder="Email address" required>
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-      <% if (flashMessages.error && flashMessages.error != '') { %>  <p class="text-danger">Forgot password?</p>
+  <form class="formSignin" action="/connexion" method="POST">
+    <h2>Sign In to your account</h2>
+    <label for="email">Email address</label>
+    <input
+      type="email"
+      name="email"
+      id="userEmail"
+      class="form-control"
+      placeholder="Email address"
+      required
+    />
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      class="form-control"
+      placeholder="Password"
+      required
+    />
+    <% if (flashMessages.error && flashMessages.error != '') { %>
+    <p class="text-danger">Forgot password?</p>
 
-      <% } %> 
-      <br /><button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
-    </form>
+    <% } %>
+    <br /><button class="btn btn-lg btn-primary btn-block" type="submit">
+      Sign In
+    </button>
+  </form>
+  <div class="mt-4">
+    <a href="signup">Create an account</a>
   </div>
+</div>
